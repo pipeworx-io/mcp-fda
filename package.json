@@ -1,0 +1,18 @@
+{
+  "name": "@pipeworx/mcp-fda",
+  "version": "1.0.0",
+  "description": "MCP server for FDA drug events, drug labels, and food recalls via openFDA API",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "files": ["src"],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "fda", "health", "drugs", "food-safety"],
+  "author": "Pipeworx <hello@pipeworx.io>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
