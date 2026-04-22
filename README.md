@@ -1,32 +1,54 @@
 # mcp-fda
 
-MCP server for FDA drug events, drug labels, and food recalls via [openFDA API](https://open.fda.gov). No authentication required.
+FDA MCP — US Food and Drug Administration public API (free, no auth)
+
+Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 250+ live data sources.
 
 ## Tools
 
 | Tool | Description |
 |------|-------------|
-| `search_drug_events` | Search FDA adverse drug event (FAERS) reports |
-| `search_drug_labels` | Search FDA drug labeling / package inserts |
-| `search_food_recalls` | Search FDA food enforcement / recall records |
 
-## Quickstart via Pipeworx Gateway
+## Quick Start
 
-Call any tool through the hosted gateway with zero setup:
+Add to your MCP client (Claude Desktop, Cursor, Windsurf, etc.):
 
-```bash
-curl -X POST https://gateway.pipeworx.io/mcp \
-  -H "Content-Type: application/json" \
-  -d '{
-    "jsonrpc": "2.0",
-    "id": 1,
-    "method": "tools/call",
-    "params": {
-      "name": "fda_search_drug_labels",
-      "arguments": { "query": "ibuprofen", "limit": 3 }
+```json
+{
+  "mcpServers": {
+    "fda": {
+      "url": "https://gateway.pipeworx.io/fda/mcp"
     }
-  }'
+  }
+}
 ```
+
+Or connect to the full Pipeworx gateway for access to all 250+ data sources:
+
+```json
+{
+  "mcpServers": {
+    "pipeworx": {
+      "url": "https://gateway.pipeworx.io/mcp"
+    }
+  }
+}
+```
+
+## Using with ask_pipeworx
+
+Instead of calling tools directly, you can ask questions in plain English:
+
+```
+ask_pipeworx({ question: "your question about Fda data" })
+```
+
+The gateway picks the right tool and fills the arguments automatically.
+
+## More
+
+- [All tools and guides](https://github.com/pipeworx-io/examples)
+- [pipeworx.io](https://pipeworx.io)
 
 ## License
 
